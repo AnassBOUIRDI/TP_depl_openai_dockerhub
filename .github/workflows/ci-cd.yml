@@ -53,6 +53,10 @@ jobs:
             echo "Missing required secret: ACR_NAME"
             exit 1
           fi
+          # Accept either short registry name (monacrhf12345) or login server
+          # (monacrhf12345.azurecr.io) and normalize for az acr commands.
+          ACR_NAME_NORMALIZED="${ACR_NAME%.azurecr.io}"
+          echo "ACR_NAME=$ACR_NAME_NORMALIZED" >> "$GITHUB_ENV"
           if [ -z "${IMAGE_REPO}" ]; then
             echo "ACR_REPOSITORY is empty, defaulting to hf-fastapi"
             echo "IMAGE_REPO=hf-fastapi" >> "$GITHUB_ENV"
