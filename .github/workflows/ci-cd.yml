@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt pytest httpx
 
       - name: Run unit tests
-        run: pytest tests/units -q
+        run: PYTHONPATH=. pytest tests/units -q
 
   push-image-to-acr:
     needs: unit-tests
