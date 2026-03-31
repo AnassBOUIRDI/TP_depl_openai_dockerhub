@@ -48,7 +48,11 @@ TAG="${TAG:-${STUDENT_ID}}"
 
 # Container Apps
 ENV_NAME="${ENV_NAME:-hf-env}"
-APP_NAME="${APP_NAME:-hf-fastapi-app-${STUDENT_ID}}"
+DEFAULT_APP_NAME="hf-fastapi-app-${STUDENT_ID}"
+if [[ -n "${APP_NAME:-}" && "${APP_NAME}" != "${DEFAULT_APP_NAME}" ]]; then
+  echo "Warning: ignoring existing APP_NAME='${APP_NAME}' and using '${DEFAULT_APP_NAME}' from student id."
+fi
+APP_NAME="${DEFAULT_APP_NAME}"
 TARGET_PORT="${TARGET_PORT:-8000}"
 
 # Hugging Face token: ask interactively if missing
