@@ -125,7 +125,7 @@ curl -s -X POST "http://127.0.0.1:8000/generate" \
 curl -s "http://127.0.0.1:8000/health" | jq .
 ```
 
-Expect `"huggingface_configured": true` when the token is set.
+Expect  `"huggingface_configured": true` when the token is set.
 
 ### Postman
 
